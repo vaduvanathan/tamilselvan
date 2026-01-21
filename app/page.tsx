@@ -446,11 +446,13 @@ function StatCard({
   value,
   change,
   positive,
+  neutral
 }: {
   title: string;
   value: string;
   change: string;
   positive?: boolean;
+  neutral?: boolean;
 }) {
   const isUp = positive ?? change.trim().startsWith("▲");
   return (
@@ -460,7 +462,11 @@ function StatCard({
         <p className="text-xl font-semibold text-yellow-400">{value}</p>
         <span
           className={`text-xs px-2 py-1 rounded-full border ${
-            isUp ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300" : "border-rose-500/30 bg-rose-500/10 text-rose-300"
+            neutral
+              ? "border-neutral-700 bg-neutral-800 text-neutral-400"
+              : isUp
+              ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+              : "border-rose-500/30 bg-rose-500/10 text-rose-300"
           }`}
         >
           {change}
